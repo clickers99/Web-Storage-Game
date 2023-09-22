@@ -1,11 +1,7 @@
 //inisialisasi variabel untuk menampung elemen dokumen
 
-const localTotalVictoryField = document.getElementById(
-  "local-total-victory-field"
-);
-const localMaximumAttemptField = document.getElementById(
-  "local-maximum-attempt-field"
-);
+const localTotalVictoryField = document.getElementById("local-total-victory-field");
+const localMaximumAttemptField = document.getElementById("local-maximum-attempt-field");
 const destroyDataButton = document.getElementById("destroy-data-button");
 const playButton = document.getElementById("play-button");
 const beforeGameDisplay = document.getElementById("before-game-display");
@@ -14,18 +10,10 @@ const afterGameDisplay = document.getElementById("after-game-display");
 const answerButton1 = document.getElementById("answer-1-button");
 const answerButton2 = document.getElementById("answer-2-button");
 const answerButton3 = document.getElementById("answer-3-button");
-const sessionUserAnswerField = document.getElementById(
-  "session-user-answer-field"
-);
-const sessionUserWrongAnswerField = document.getElementById(
-  "session-user-wrong-answer-field"
-);
-const sessionTrueAnswerField = document.getElementById(
-  "session-true-answer-field"
-);
-const sessionUserAttemptsField = document.getElementById(
-  "session-user-attempts-amount-field"
-);
+const sessionUserAnswerField = document.getElementById("session-user-answer-field");
+const sessionUserWrongAnswerField = document.getElementById("session-user-wrong-answer-field");
+const sessionTrueAnswerField = document.getElementById("session-true-answer-field");
+const sessionUserAttemptsField = document.getElementById("session-user-attempts-amount-field");
 
 //inisialisasi fungsi untuk menghasilkan jawaban permainan
 function getAnswer() {
@@ -73,9 +61,7 @@ window.addEventListener("load", function () {
     sessionUserAttemptsKey
   );
   localTotalVictoryField.innerText = localStorage.getItem(localTotalVictoryKey);
-  localMaximumAttemptField.innerText = localStorage.getItem(
-    localMaximumAttemptsKey
-  );
+  localMaximumAttemptField.innerText = localStorage.getItem(localMaximumAttemptsKey);
 });
 
 playButton.addEventListener("click", function () {
@@ -127,20 +113,13 @@ function checkAnswer(userGuess) {
 }
 
 function updateScore() {
-  const sessionAttemptsValue = parseInt(
-    sessionStorage.getItem(sessionUserAttemptsKey)
-  );
-  const localAttemptsValue = parseInt(
-    localStorage.getItem(localMaximumAttemptsKey)
-  );
+  const sessionAttemptsValue = parseInt(sessionStorage.getItem(sessionUserAttemptsKey));
+  const localAttemptsValue = parseInt(localStorage.getItem(localMaximumAttemptsKey));
   if (sessionAttemptsValue > localAttemptsValue) {
     localStorage.setItem(localMaximumAttemptsKey, sessionAttemptsValue);
     localMaximumAttemptField.innerText = sessionAttemptsValue;
   }
-
-  const previousTotalVictoryAmount = parseInt(
-    localStorage.getItem(localTotalVictoryKey)
-  );
+  const previousTotalVictoryAmount = parseInt(localStorage.getItem(localTotalVictoryKey));
   localStorage.setItem(localTotalVictoryKey, previousTotalVictoryAmount + 1);
   localTotalVictoryField.innerText = localStorage.getItem(localTotalVictoryKey);
 }
@@ -149,9 +128,7 @@ window.addEventListener("beforeunload", function () {
   sessionUserAnswerField.innerText = "";
   sessionUserWrongAnswerField.innerText = "";
   sessionStorage.setItem(sessionUserAttemptsKey, 0);
-  sessionUserAttemptsField.innerText = sessionStorage.getItem(
-    sessionUserAttemptsKey
-  );
+  sessionUserAttemptsField.innerText = sessionStorage.getItem(sessionUserAttemptsKey);
 });
 
 destroyDataButton.addEventListener("click", function () {
